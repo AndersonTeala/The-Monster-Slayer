@@ -1,0 +1,147 @@
+/* GERAL */
+
+html {
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: #282a36;
+  color: #e1e1e6;
+  font-size: 18px;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+}
+
+.panel {
+  margin: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 10px #8257e4;
+}
+
+/* ÁREA DOOS PONTOS */
+
+.scores {
+  display: flex;
+}
+
+.score {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.score img {
+  height: 90px;
+}
+
+.score h1 {
+  font-weight: 300;
+  font-size: 1.6rem;
+}
+
+.life-bar {
+  width: 80%;
+  height: 20px;
+  border: 1px solid #8257e4;
+}
+
+.life-bar .life {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  background-color: #39d361;
+}
+
+.life-bar .life.danger {
+  background-color: #ff5555;
+}
+
+.trophy {
+  height: 90px;
+}
+
+/* AREA RESULTADO */
+
+.result {
+  display: flex;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+/* AREA DOS BOTOES */
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  padding: 5px 10px;
+  margin: 0px 10px;
+  border-radius: 5px;
+  border-color: #282a36;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+}
+
+.new-game {
+  background-color: #8257e4;
+  color: #e1e1e6;
+}
+
+.attack {
+  background-color: #ff5555;
+  color: #282a36;
+}
+
+.especial-attack {
+  background-color: #f08d1f;
+  color: #282a36;
+}
+
+.heal {
+  background-color: #39d361;
+  color: #e1e1e6;
+}
+
+.give-up {
+  background-color: #8257e4;
+  color: #e1e1e6;
+}
+
+/* AREA DOS LOGS */
+
+.logs ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.logs ul li {
+  display: flex;
+  justify-content: center;
+  margin: 4px 0px;
+  padding: 3px 0px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  border-radius: 3px;
+}
+
+.player {
+  background-color: #8257e4aa;
+  color: #e1e1e6;
+}
+
+.monster {
+  background-color: #ff5555aa;
+  color: #e1e1e6;
+}
