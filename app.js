@@ -2,6 +2,7 @@ new Vue({
     el: '#app',
     data: {
       running: false,
+      logged: false,
       playerLife: 100,
       monsterLife: 100,
       logs: []
@@ -12,6 +13,9 @@ new Vue({
         }
     },
     methods: {
+        entrarGame(){
+          this.logged = true
+        },
         startGame() {
           this.running = true
           this.playerLife = 100
