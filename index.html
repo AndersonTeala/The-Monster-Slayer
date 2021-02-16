@@ -9,10 +9,10 @@
 </head>
 <body>
     <div id="app">
-        <div class="init">
+        <div class="init" v-if="welcome">
             <div class="welcome">
               <div class="test">
-                <h1>OLÁ SEJA BEM VINDO!</h1>
+                <h1>JOGADOR VS MONSTRO</h1>
                 <img src="images/logo.png" alt="image logo">
               </div>
               <div class="test">
@@ -20,58 +20,63 @@
                 <p>Digite o seu nome a baixo e do seu inimigo e inicie o jogo</p>
               </div>
               <h3>Digite seu nome:</h3>
-              <input type="text">
+              <input type="text" v-on:input="nomeJogador">
               <h3>Digite o nome do seu inimigo:</h3>
-              <input type="text">
-              <button class="btn-entrar" @click="entrarGame">ENTRAR</button>
+              <input type="text" v-on:input="nomeMonstro">
             </div>
             <div class="dev">
               <img src="images/dev.png" alt="image logo">
               <footer>Desenvolvido por Anderson Teala</footer>
             </div>
-        </div>
-          <div class="panel scores">
-              <div class="score">
-                <img src="images/player.png" alt="image player">
-                <h1>Jogador</h1>
-                <div class="life-bar">
-                  <div class="life"
-                    :class="{danger: playerLife <= 20}"
-                    :style="{width: playerLife + '%'}"></div>
-                </div>
-                <div>{{ playerLife }}%</div>
+          </div>
+          <template v-if="logged">
+              <div class="panel scores">
+                  <div class="score">
+                    <img src="images/player.png" alt="image player">
+                    <h1>{{ jogador }}</h1>
+                    <div class="life-bar">
+                      <div class="life"
+                        :class="{danger: playerLife <= 20}"
+                        :style="{width: playerLife + '%'}"></div>
+                    </div>
+                    <div>{{ playerLife }}%</div>
+                  </div>
+                  <div class="score">
+                    <img src="images/monster.png" alt="image monster">
+                    <h1>{{ monstro }}</h1>
+                    <div class="life-bar">
+                      <div class="life"
+                      :class="{danger: monsterLife <= 20}"
+                      :style="{width: monsterLife + '%'}"></div>
+                    </div>
+                    <div>{{ monsterLife }}%</div>
+                  </div>
               </div>
-              <div class="score">
-                <img src="images/monster.png" alt="image monster">
-                <h1>Monstro</h1>
-                <div class="life-bar">
-                  <div class="life"
-                  :class="{danger: monsterLife <= 20}"
-                  :style="{width: monsterLife + '%'}"></div>
+              <div v-if="hasResult" class="panel result">
+                <div v-if="monsterLife == 0" class="win">Você Ganhou!!! :)
+                  <img class="trophy" src="images/trophy.png" alt="image trophy">
                 </div>
-                <div>{{ monsterLife }}%</div>
+                <div v-else class="lose">Você perdeu!!! :(</div>
               </div>
-          </div>
-          <div v-if="hasResult" class="panel result">
-            <div v-if="monsterLife == 0" class="win">Você Ganhou!!! :)
-              <img class="trophy" src="images/trophy.png" alt="image trophy">
-            </div>
-            <div v-else class="lose">Você perdeu!!! :(</div>
-          </div>
-          <div class="panel buttons">
-              <template v-if="running">
-                  <button @click="attack(false)"
-                      class="btn attack">Ataque</button>
-                  <button @click="attack(true)"
-                      class="btn especial-attack">Ataque Especial</button>
-                  <button @click="healAndHurt"
-                      class="btn heal">Curar</button>
-                  <button @click="running = false"
-                      class="btn give-up">Desistir</button>
-              </template>
-            <button v-else @click="startGame"
-                class="btn new-game">Iniciar Jogo</button>
-          </div>
+              <div class="panel buttons">
+                  <template v-if="running">
+                      <button @click="attack(false)"
+                          class="btn attack">Ataque</button>
+                      <button @click="attack(true)"
+                          class="btn especial-attack">Ataque Especial</button>
+                      <button @click="healAndHurt"
+                          class="btn heal">Curar</button>
+                      <button @click="desistir"
+                          class="btn give-up">Desistir</button>
+                      <button @click="reiniciar"
+                          class="btn give-up">Reiniciar</button>
+                  </template>
+                <button v-else @click="startGame"
+                    class="btn new-game">Iniciar Jogo</button>
+              </div>
+          </template>
+          <button v-else @click="entrarGame"
+              class="btn-entrar" @click="entrarGame">ENTRAR</button>
           <div v-if="logs.length"
               class="panel logs">
               <ul>

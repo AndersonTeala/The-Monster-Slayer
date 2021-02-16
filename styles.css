@@ -49,21 +49,24 @@ body {
 }
 
 .welcome h1 {
-  font-size: 50px;
   color: #8257e4;
 }
 
 .welcome p {
-  font-size: 22px;
+  font-size: 18px;
   color: #39d361;
+}
+
+.welcome h3 {
+  font-size: 14px;
 }
 
 .welcome input {
   background-color: #8257e4;
   color: #e1e1e6;
-  font-size: 22px;
-  height: 50px;
-  width: 300px;
+  font-size: 12px;
+  height: 20px;
+  width: 200px;
   border-color: #8257e4;
   border-radius: 8px 16px;
   margin: 5px;
@@ -82,7 +85,7 @@ body {
 }
 
 .dev img {
-  height: 130px;
+  height: 100px;
 }
 
 .btn-entrar {

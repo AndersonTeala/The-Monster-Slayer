@@ -2,6 +2,9 @@ new Vue({
     el: '#app',
     data: {
       running: false,
+      welcome: true,
+      jogador: 'Jogador',
+      monstro: 'Monstro',
       logged: false,
       playerLife: 100,
       monsterLife: 100,
@@ -14,13 +17,30 @@ new Vue({
     },
     methods: {
         entrarGame(){
-          this.logged = true
+            this.logged = true
+            this.welcome = false
         },
         startGame() {
-          this.running = true
+            this.running = true
+            this.playerLife = 100
+            this.monsterLife = 100
+            this.logs = []
+      },
+      desistir() {
+            this.running = false
+            this.playerLife = 100
+            this.monsterLife = 100
+            this.logs = []
+      },
+      reiniciar() {
+          this.welcome = true
+          this.logged = false
+          this.running = false
+          this.jogador = 'Jogador'
+          this.monstro = 'Monstro'
+          this.logs = []
           this.playerLife = 100
           this.monsterLife = 100
-          this.logs = []
       },
       attack(especial) {
         this.hurt('monsterLife', 4, 8, especial, 'Jogador', 'Monstro', 'player')
@@ -49,6 +69,12 @@ new Vue({
       },
       registerLog(text, cls) {
           this.logs.unshift({ text, cls })
+      },
+      nomeJogador(event) {
+        this.jogador = event.target.value
+      },
+      nomeMonstro(event) {
+        this.monstro = event.target.value
       }
     },
     watch: {
